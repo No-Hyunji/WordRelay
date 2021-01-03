@@ -3,17 +3,15 @@ const btn = document.querySelector('#button'); // id가 button인 태그를 가�
 btn.addEventListener('click',() => {
     // 태그는 저장이 가능. 
     const wordTag = document.querySelector('#word');
-    const word = wordTag.textContent;
+    const word = wordTag.textContent; // let을 사용하면 처음값을 바꿀 수 있다. 
     // 값을 가져올 때 input 말곤 거의 textContext를 쓴다.
     // .은 ~의를 의미하는 것과 같다. 
     const inputTag = document.querySelector('#input');
     const errorTag = document.querySelector('#error');
     const input = inputTag.value;
-    const lastIndex = word.length - 1;
-    const w = word[lastIndex];
-    const i = input[0];
     // w, i 에 저장을 해도되고 안해도 됨. 어차피 한번 쓰이는 것 
-    if(w === i){ // 같으면 여기블럭 
+    // 한 번만 쓰이는 변수들 그냥 대입않고 쓰기.
+    if(word[word.length - 1] === input[0]){ // 같으면 여기블럭 
         wordTag.textContent = input; 
         // 제시어칸 선택 했으면 여기에 input값을 넣어준다. 대입.
         // document.querySelector('#word').textContent가
