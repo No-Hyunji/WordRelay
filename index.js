@@ -1,5 +1,7 @@
 const btn = document.querySelector('#button'); // id가 button인 태그를 가져온다!
 // document.querySelector(아이디)는 그 아이디의 태그를 가져온다. 
+
+const dictionary = [];
 btn.addEventListener('click',() => {
     // 태그는 저장이 가능. 
     const wordTag = document.querySelector('#word');
@@ -9,7 +11,12 @@ btn.addEventListener('click',() => {
     const inputTag = document.querySelector('#input');
     const errorTag = document.querySelector('#error');
     const input = inputTag.value;
-    // w, i 에 저장을 해도되고 안해도 됨. 어차피 한번 쓰이는 것 
+    if(dictionary.includes(input)){
+        errorTag.textContent = '중복이네요';
+        inputTag.value = '';
+        inputTag.focus();
+    }else{
+        // w, i 에 저장을 해도되고 안해도 됨. 어차피 한번 쓰이는 것 
     // 한 번만 쓰이는 변수들 그냥 대입않고 쓰기.
     if(word[word.length - 1] === input[0]){ // 같으면 여기블럭 
         wordTag.textContent = input; 
@@ -23,10 +30,13 @@ btn.addEventListener('click',() => {
         // 기존에 글자 지울때 빈 문자열 씀 
         inputTag.value = '';
         inputTag.focus();
+        dictionary.push(input);
     } else { // 다르면 여기블럭 
         errorTag.textContent = '땡';
         // 에러칸 선택 한 뒤 '땡'문자열 출력해줌. 
         inputTag.value = '';
         inputTag.focus();
     }
+    }
+    
 })
