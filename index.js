@@ -8,9 +8,18 @@ btn.addEventListener('click',() => {
     const lastIndex = word.length - 1;
     const w = word[lastIndex];
     const i = input[0];
-    if(w === i){
-        document.querySelector('#word').textContent = input;
-    } else {
+    // w, i 에 저장을 해도되고 안해도 됨. 어차피 한번 쓰이는 것 
+    if(w === i){ // 같으면 여기블럭 
+        document.querySelector('#word').textContent = input; 
+        // 제시어칸 선택 했으면 여기에 input값을 넣어준다. 대입.
+        document.querySelector('#error').textContent = '';
+        // 기존에 글자 지울때 빈 문자열 씀 
+        document.querySelector('#input').value = '';
+        document.querySelector('#input').focus();
+    } else { // 다르면 여기블럭 
         document.querySelector('#error').textContent = '땡';
+        // 에러칸 선택 한 뒤 '땡'문자열 출력해줌. 
+        document.querySelector('#input').value = '';
+        document.querySelector('#input').focus();
     }
 })
